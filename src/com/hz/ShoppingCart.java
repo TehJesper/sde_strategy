@@ -3,9 +3,13 @@ import products.Product;
 
 import java.util.ArrayList;
 
-public class ShoppingCart extends ArrayList<Product> {
+public class ShoppingCart extends ArrayList<Product>{
 
-    public double getTotalPrice(DiscountCalculator discountCalculator) {
+//    Context context = new Context(new Regular());
+    Context context = new Context(new ChristmasEve());
+//    Context context = new Context(new BlackFriday());
+
+    public double getTotalPrice(Customer customer) {
 
         double totalPrice = 0.0;
 
@@ -13,7 +17,7 @@ public class ShoppingCart extends ArrayList<Product> {
 
             int index = this.indexOf(product);
 
-            double discount = discountCalculator.getDiscount(product, index);
+            double discount = context.getDiscount(product, index, customer);
             double price = product.getPrice() * discount;
 
             totalPrice += price;

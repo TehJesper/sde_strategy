@@ -21,7 +21,6 @@ public class Customer {
     public Customer(CustomerType customerType, String name) {
         this.customerType = customerType;
         this.name = name;
-
         this.cart = new ShoppingCart();
     }
 
